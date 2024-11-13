@@ -1,35 +1,55 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
+  <q-layout view="hHh lpR fFr">
     <q-header elevated>
-      <q-toolbar>
+      <q-toolbar class="bg-primary ">
+        <a-tool-bar-logo>
+          <img src="../assets/images/logo/ToothArtLogo.svg" alt="brand-logo" width="60">
+        </a-tool-bar-logo>
+        <q-toolbar-title class="dark text-white">Tooth Art Dental Clinic</q-toolbar-title>
+        <q-section class="row wrap justify-evenly items-center content-center q-gutter-sm relative-position q-m-md"
+          v-if="!$q.screen.lt.md"
+        >
+          <q-btn-toggle
+          class="q-m-md"
+          v-model="model"
+          unelevated
+          flat
+          spread
+          :options="[
+            {label: 'Home', value: 'home'},
+            {label: 'Service', value: 'service'},
+            {label: 'Contact', value: 'contact'},
+            {label: 'About', value: 'about'}
+            ]"
+
+        />
+
         <q-btn
+        class="q-m-md"
+        style="width: 8em;"
+        rounded
+        outline
+        label="Login"></q-btn>
+        </q-section>
+
+
+        <!-- Menu button only visible on smaller screens -->
+        <q-btn
+          v-if="$q.screen.lt.md"
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawer"
+          @click="toggleRightDrawer"
         />
-
-        <q-toolbar-title>
-          Quasar App
-        </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
 
-    <q-drawer
-      v-model="leftDrawerOpen"
-      show-if-above
-      bordered
-    >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
+    <!-- Drawer is hidden on larger screens -->
+    <q-drawer v-if="$q.screen.lt.md" v-model="rightDrawerOpen" show-if-above bordered side="right">
+      <q-list v-show="rightDrawerOpen">
+        <q-item-label header>Menu</q-item-label>
 
         <EssentialLink
           v-for="link in linksList"
@@ -39,68 +59,37 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container>
+    <q-page-container style="background: linear-gradient(45deg, #fff, #f97316)">
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { ref } from "vue";
+import { useQuasar } from "quasar";  // Import Quasar composable for screen breakpoints
+import EssentialLink from "components/EssentialLink.vue";
 
 defineOptions({
-  name: 'MainLayout'
-})
+  name: "MainLayout",
+});
+
+const $q = useQuasar();  // Use Quasar screen breakpoints
 
 const linksList = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
+  { title: "Home", icon: "home" },
+  { title: "Services", icon: "" },
+  { title: "Discord Chat Channel", caption: "chat.quasar.dev", icon: "chat", link: "https://chat.quasar.dev" },
+  { title: "Forum", caption: "forum.quasar.dev", icon: "record_voice_over", link: "https://forum.quasar.dev" },
+  { title: "Twitter", caption: "@quasarframework", icon: "rss_feed", link: "https://twitter.quasar.dev" },
+  { title: "Facebook", caption: "@QuasarFramework", icon: "public", link: "https://facebook.quasar.dev" },
+  { title: "Quasar Awesome", caption: "Community Quasar projects", icon: "favorite", link: "https://awesome.quasar.dev" },
+];
 
-const leftDrawerOpen = ref(false)
+const rightDrawerOpen = ref(false);
 
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+function toggleRightDrawer() {
+  rightDrawerOpen.value = !rightDrawerOpen.value;
 }
+console.log($q);
 </script>
