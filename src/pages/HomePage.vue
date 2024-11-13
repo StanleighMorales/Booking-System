@@ -18,15 +18,32 @@ const autoplay = ref(true);
   <q-page class="flex flex-center min-width: 100%; max-width: 100%; ">
     <div id="parent" class="fit row wrap justify-evenly items-center content-center q-gutter-sm relative-position q-m-md " style="overflow: hidden;">
       <div id="text" class=" rounder-borders" style="overflow: auto; max-width: 35em;">
-        <q-card>
+        <q-card
+        flat
+        class="transparent">
           <q-card-section>
-
-            Child #1
+            <q-cart-title
+              class="text-h3 text-bold "
+            >
+              Welcome to Tooth Art Dental Clinic
+            </q-cart-title>
             <q-card>
-              <q-card-section id="description" class="text-h5">
+              <q-card-section id="description" class="text-h5 q-ma-sm">
                 <span v-bind:style="fontSize"
                 >We strive to remove barriers connected to our society about Dental Health. We want to promote Oral Health awareness that it's a necessity. We want to remove anything that hinders a patient's ability to maintain a healthy smile. Our team is constantly working to discover new ways to break through barriers so that each and everyone of our patients can achieve the smile they truly deserve.
                 </span>
+                <div class="flex justify-end q-my-sm">
+                <q-btn
+                  class="bg-primary text-white "
+                  >Book Now
+                  <q-icon
+                  name="calendar_today"
+                  class="q-ml-sm"
+                  />
+
+                  </q-btn>
+                </div>
+
               </q-card-section>
             </q-card>
           </q-card-section>
@@ -64,32 +81,65 @@ const autoplay = ref(true);
 
     </div>
   </q-page>
-  <q-page class="fit bg-primary q-px-md">
+  <q-page id="service" class="fit bg-primary q-pa-md ">
     <div class="row">
       <div class="text-h4 text-bold q-px-sm bg-warning"> Our Services</div>
 
 
     </div>
-    <div class="row q-gutter-md justify-center q-pt-md ">
+    <div class="row q-gutter-md justify-evenly q-pt-md ">
+      <!-- service-images -->
       <q-card
-        style=" min-width: 25em; max-width: 25em; height: 40em; border: solid 1px white">
+        style=" min-width: 33em; max-width: 33em; height: 45em; border: solid 1px white">
         <q-img
-        src="../assets/images/contents/Screenshot 2024-11-02 125030.png"
+        src="../assets/images/contents/surgery.jpg"
         class="rounded-borders"
-        style="max-width: 25em; height: 30em;"
+        style="max-width: 35em; height: 30em;"
 
       ></q-img>
+      <!-- Dental Surgery -->
       <q-card-section class="relative-position">
-        <q-card-title class="q-pa-md text-bold">hello card</q-card-title>
+        <q-card-title class="q-pa-md text-bold">Dental Surgery</q-card-title>
           <q-card-section id="description" class="q-px-md q-py-sm a">
             Keep yourself and your loved ones healthy! At Tooth Art Dental Clinic, our friendly and experienced staff will make sure you always feel comfortable and well-informed. Schedule your Dental Surgery today for the whole family and see how our team of qualified professionals can get you or your loved ones feeling great.        </q-card-section>
       </q-card-section>
+      </q-card>
+      <q-card
+        style=" min-width: 33em; max-width: 33em; height: 45em; border: solid 1px white">
+        <q-img
+        src="../assets/images/contents/tooth-extraction.jpg"
+        class="rounded-borders"
+        style="max-width: 35em; height: 30em;"
 
+      ></q-img>
+      <!-- Tooth Extraction -->
+      <q-card-section class="relative-position">
+        <q-card-title class="q-pa-md text-bold">Tooth Extraction</q-card-title>
+          <q-card-section id="description" class="q-px-md q-py-sm a">
+            If you’re looking for quality Tooth Extraction, then Tooth Art Dental Clinic is the Dental Clinic for you. Our professional team is here to guide our patients and their families every step of the way. Stop by and schedule an appointment to experience firsthand how our Tooth Extraction can help your health today.          </q-card-section>
+      </q-card-section>
+      </q-card>
+      <!-- Brace Treatment -->
+      <q-card
+        style=" min-width: 33em; max-width: 33em; height: 45em; border: solid 1px white">
+        <q-img
+        src="../assets/images/contents/Braces.jpg"
+        class="rounded-borders"
+        style="max-width: 35em; height: 30em;"
 
+      ></q-img>
+      <q-card-section class="relative-position">
+        <q-card-title class="q-pa-md text-bold">Braces Treatment</q-card-title>
+          <q-card-section id="description" class="q-px-md q-py-sm a">
+            At Tooth Art Dental Clinic, scheduling Braces Treatment has become simpler than ever before. Our personalized Braces Treatment provide patients with the resources they need to get their health on track — you’ll leave our clinic well informed and confident that your health is in good hands. Get in touch and schedule an appointment at your earliest convenience.            </q-card-section>
+          </q-card-section>
       </q-card>
 
 
     </div>
+  </q-page>
+  <q-page>
+
   </q-page>
 </template>
 

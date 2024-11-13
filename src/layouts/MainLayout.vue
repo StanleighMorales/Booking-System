@@ -1,16 +1,16 @@
 <template>
   <q-layout view="hHh lpR fFr">
     <q-header elevated>
-      <q-toolbar class="bg-primary ">
-        <a-tool-bar-logo>
+      <q-toolbar class="bg-white q-px-xl">
+        <q-avater>
           <img src="../assets/images/logo/ToothArtLogo.svg" alt="brand-logo" width="60">
-        </a-tool-bar-logo>
-        <q-toolbar-title class="dark text-white">Tooth Art Dental Clinic</q-toolbar-title>
+        </q-avater>
+        <q-toolbar-title class="dark text-primary">Tooth Art Dental Clinic</q-toolbar-title>
         <q-section class="row wrap justify-evenly items-center content-center q-gutter-sm relative-position q-m-md"
           v-if="!$q.screen.lt.md"
         >
           <q-btn-toggle
-          class="q-m-md"
+          class="q-m-md text-primary"
           v-model="model"
           unelevated
           flat
@@ -25,10 +25,9 @@
         />
 
         <q-btn
-        class="q-m-md"
+        class="q-m-md text-white bg-primary"
         style="width: 8em;"
         rounded
-        outline
         label="Login"></q-btn>
         </q-section>
 
