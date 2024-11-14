@@ -5,7 +5,13 @@ const routes = [
     children: [
       { path: '', component: () => import('src/pages/HomePage.vue'),
         children: [
-          {path: '', component: () => import('src/pages/ClinicMapPage.vue')}
+          {
+            path: '',
+            components: {
+              default: () => import('src/pages/ClinicMapPage.vue'), // Default view
+              bookAppointment: () => import('src/components/AddAppointment.vue') // Named view
+            }
+          }
         ]
        }
     ]

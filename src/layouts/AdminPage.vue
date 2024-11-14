@@ -1,7 +1,7 @@
 <template>
-  <q-layout view="lHh lpR lFf">
+  <q-layout view="hHh lpR fFf">
 
-    <q-header elevated class="bg-primary text-white" height-hint="98">
+    <q-header elevated class="bg-primary text-white">
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
 
@@ -9,19 +9,17 @@
           <q-avatar>
             <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
           </q-avatar>
-          Title
+          Admin Pannel
         </q-toolbar-title>
       </q-toolbar>
-
-      <q-tabs align="left">
-        <q-route-tab to="/page1" label="Page One" />
-        <q-route-tab to="/page2" label="Page Two" />
-        <q-route-tab to="/page3" label="Page Three" />
-      </q-tabs>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" side="left" overlay elevated>
-      <!-- drawer content -->
+    <q-drawer show-if-above v-model="leftDrawerOpen" side="left" bordered elevated>
+      <EssentialLink
+          v-for="link in linksList"
+          :key="link.title"
+          v-bind="link"
+        />
     </q-drawer>
 
     <q-page-container>
@@ -31,19 +29,25 @@
   </q-layout>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
 
-export default {
-  setup () {
-    const leftDrawerOpen = ref(false)
+import EssentialLink from "components/EssentialLink.vue";
 
-    return {
-      leftDrawerOpen,
-      toggleLeftDrawer () {
-        leftDrawerOpen.value = !leftDrawerOpen.value
-      }
-    }
-  }
+const linksList = [
+  { title: "Home", icon: "" },
+  { title: "Services", icon: "" },
+  { title: "Discord Chat Channel", caption: "chat.quasar.dev", icon: "chat", link: "https://chat.quasar.dev" },
+  { title: "Forum", caption: "forum.quasar.dev", icon: "record_voice_over", link: "https://forum.quasar.dev" },
+  { title: "Twitter", caption: "@quasarframework", icon: "rss_feed", link: "https://twitter.quasar.dev" },
+  { title: "Facebook", caption: "@QuasarFramework", icon: "public", link: "https://facebook.quasar.dev" },
+  { title: "Quasar Awesome", caption: "Community Quasar projects", icon: "favorite", link: "https://awesome.quasar.dev" },
+];
+
+const leftDrawerOpen = ref(false)
+
+
+    function toggleLeftDrawer() {
+  leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 </script>

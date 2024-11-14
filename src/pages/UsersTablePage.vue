@@ -4,12 +4,13 @@
 <div class="q-pa-md">
     <q-table
       flat bordered
-      title="Treats"
+      title="All Users"
       :rows="rows"
       :columns="columns"
       row-key="name"
       dark
-      color="amber"
+      class="bg-primary text-black"
+      color="white"
     ></q-table>
   </div>
 </div>
@@ -20,14 +21,14 @@ const columns = [
   {
     name: 'name',
     required: true,
-    label: 'Dessert (100g serving)',
+    label: 'User Email',
     align: 'left',
     field: row => row.name,
     format: val => `${val}`,
     sortable: true
   },
-  { name: 'calories', align: 'center', label: 'Calories', field: 'calories', sortable: true },
-  { name: 'fat', label: 'Fat (g)', field: 'fat', sortable: true },
+  { name: 'user_id', align: 'center', label: 'User ID', field: 'user_id', sortable: true },
+  { name: 'C', label: 'Fat (g)', field: 'fat', sortable: true },
   { name: 'carbs', label: 'Carbs (g)', field: 'carbs' },
   { name: 'protein', label: 'Protein (g)', field: 'protein' },
   { name: 'sodium', label: 'Sodium (mg)', field: 'sodium' },
@@ -37,7 +38,7 @@ const columns = [
 
 const rows = [
   {
-    name: 'Frozen Yogurt',
+    name: 'Neil_Batak@gmail.com',
     calories: 159,
     fat: 6.0,
     carbs: 24,
@@ -136,6 +137,6 @@ const rows = [
     calcium: '12%',
     iron: '6%'
   }
-] 
+]
 
 </script>

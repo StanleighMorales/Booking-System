@@ -49,6 +49,8 @@ const onSubmit = async () => {
     submitting.value = false
   }
 }
+
+
 </script>
 
 <template>
@@ -70,17 +72,8 @@ const onSubmit = async () => {
                 >We strive to remove barriers connected to our society about Dental Health. We want to promote Oral Health awareness that it's a necessity. We want to remove anything that hinders a patient's ability to maintain a healthy smile. Our team is constantly working to discover new ways to break through barriers so that each and everyone of our patients can achieve the smile they truly deserve.
                 </span>
                 <div class="flex justify-end q-my-sm">
-                <q-btn
-                  class="bg-primary text-white "
-                  >Book Now
-                  <q-icon
-                  name="calendar_today"
-                  class="q-ml-sm"
-                  />
-
-                  </q-btn>
+                  <router-view name="bookAppointment" />
                 </div>
-
               </q-card-section>
             </q-card>
           </q-card-section>
@@ -92,6 +85,7 @@ const onSubmit = async () => {
             Child #2
             <div class="q-pa-md">
               <q-carousel
+
                 animated
                 v-model="slide"
                 navigation
