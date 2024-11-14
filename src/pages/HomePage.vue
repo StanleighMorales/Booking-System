@@ -9,9 +9,46 @@ const fontSize = computed(()=> {
 defineOptions({
   name: 'HomePage'
 });
-
+//Home page image slider
 const slide = ref('style')
 const autoplay = ref(true);
+
+const $q = useQuasar()
+
+// Form data
+const name = ref('')
+const email = ref('')
+const subject = ref('')
+const message = ref('')
+const submitting = ref(false)
+
+const onSubmit = async () => {
+  submitting.value = true
+
+  try {
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000))
+
+    // Show success message
+    $q.notify({
+      type: 'positive',
+      message: 'Thank you for your message. We will get back to you soon!'
+    })
+
+    // Reset form
+    name.value = ''
+    email.value = ''
+    subject.value = ''
+    message.value = ''
+  } catch (error) {
+    $q.notify({
+      type: 'negative',
+      message: 'Something went wrong. Please try again.'
+    })
+  } finally {
+    submitting.value = false
+  }
+}
 </script>
 
 <template>
@@ -22,11 +59,11 @@ const autoplay = ref(true);
         flat
         class="transparent">
           <q-card-section>
-            <q-cart-title
-              class="text-h3 text-bold "
+            <q-card-title
+              class="text-h3 text-bold text-white "
             >
               Welcome to Tooth Art Dental Clinic
-            </q-cart-title>
+            </q-card-title>
             <q-card>
               <q-card-section id="description" class="text-h5 q-ma-sm">
                 <span v-bind:style="fontSize"
@@ -83,7 +120,9 @@ const autoplay = ref(true);
   </q-page>
   <q-page id="service" class="fit bg-primary q-pa-md ">
     <div class="row">
-      <div class="text-h4 text-bold q-px-sm bg-warning"> Our Services</div>
+      <div class=" full-width text-h4 text-bold q-px-sm text-white flex justify-center">
+        <div>Our Services</div>
+      </div>
 
 
     </div>
@@ -92,11 +131,11 @@ const autoplay = ref(true);
       <q-card
         style=" min-width: 33em; max-width: 33em; height: 45em; border: solid 1px white">
         <q-img
-        src="../assets/images/contents/surgery.jpg"
-        class="rounded-borders"
-        style="max-width: 35em; height: 30em;"
+          src="../assets/images/contents/surgery.jpg"
+          class="rounded-borders"
+          style="max-width: 35em; height: 30em;"
 
-      ></q-img>
+        />
       <!-- Dental Surgery -->
       <q-card-section class="relative-position">
         <q-card-title class="q-pa-md text-bold">Dental Surgery</q-card-title>
@@ -107,11 +146,11 @@ const autoplay = ref(true);
       <q-card
         style=" min-width: 33em; max-width: 33em; height: 45em; border: solid 1px white">
         <q-img
-        src="../assets/images/contents/tooth-extraction.jpg"
-        class="rounded-borders"
-        style="max-width: 35em; height: 30em;"
+          src="../assets/images/contents/tooth-extraction.jpg"
+          class="rounded-borders"
+          style="max-width: 35em; height: 30em;"
 
-      ></q-img>
+        />
       <!-- Tooth Extraction -->
       <q-card-section class="relative-position">
         <q-card-title class="q-pa-md text-bold">Tooth Extraction</q-card-title>
@@ -123,24 +162,127 @@ const autoplay = ref(true);
       <q-card
         style=" min-width: 33em; max-width: 33em; height: 45em; border: solid 1px white">
         <q-img
-        src="../assets/images/contents/Braces.jpg"
-        class="rounded-borders"
-        style="max-width: 35em; height: 30em;"
+          src="../assets/images/contents/Braces.jpg"
+          class="rounded-borders"
+          style="max-width: 35em; height: 30em;"
 
-      ></q-img>
+      />
       <q-card-section class="relative-position">
         <q-card-title class="q-pa-md text-bold">Braces Treatment</q-card-title>
           <q-card-section id="description" class="q-px-md q-py-sm a">
             At Tooth Art Dental Clinic, scheduling Braces Treatment has become simpler than ever before. Our personalized Braces Treatment provide patients with the resources they need to get their health on track — you’ll leave our clinic well informed and confident that your health is in good hands. Get in touch and schedule an appointment at your earliest convenience.            </q-card-section>
           </q-card-section>
       </q-card>
-
-
     </div>
   </q-page>
-  <q-page>
+  <!-- about section -->
+  <q-page id="about" class=" bg-grey q-pa-md">
+    <div class="row">
+      <div class="col">
+        <q-card>
+          class 1
+        </q-card>
+      </div>
+      <div class="col">
+        <q-card>
+          class 2
+        </q-card>
+      </div>
+    </div>
+</q-page>
 
+<!-- interactive map section -->
+<q-page class="flex flex-center min-width: 100%; max-width: 100%; ">
+  <router-view />
+</q-page>
+<!-- contact section -->
+<q-page id="contact" class="flex flex-center row min-width: 100%; max-width: 100%; ">
+      <div>
+        <q-card>
+          <q-card-section class="q-pb-none">
+          <div class="text-bold">
+            Come and Visit Us
+          </div>
+          <div class="text-primary">
+            A.C Cortes cor, B.B Cabahug Street Guizo Mandaue City
+          </div>
+
+          </q-card-section>
+          <q-card-section>
+            <q-list bordered separator  class="col-12">
+              <q-item clickable v-ripple  >
+                <q-item-section class="flex justify-center">Monday: 9:00am - 5:00pm</q-item-section>
+              </q-item>
+              <q-item clickable v-ripple  >
+                <q-item-section>Tuesday: 9:00am - 5:00pm</q-item-section>
+              </q-item>
+              <q-item clickable v-ripple  >
+                <q-item-section>Wednesday: 9:00am - 5:00pm</q-item-section>
+              </q-item>
+              <q-item clickable v-ripple  >
+                <q-item-section>Thursday: 9:00am - 5:00pm</q-item-section>
+              </q-item>
+              <q-item clickable v-ripple  >
+                <q-item-section>Friday: 9:00am - 5:00pm</q-item-section>
+              </q-item>
+              <q-item clickable v-ripple  >
+                <q-item-section>Saturday: 9:00am - 5:00pm</q-item-section>
+              </q-item>
+
+            </q-list>
+          </q-card-section>
+        </q-card>
+      </div>
+      <div class="q-pa-md" style="max-width: 400px; width: 100%">
+
+        <q-card class="q-pa-lg">
+          <q-card-section>
+            <div class="text-h4 text-center q-mb-lg">Contact Us</div>
+            <q-form @submit.prevent="onSubmit" class="q-gutter-md">
+              <q-input
+                filled
+                v-model="name"
+                label="Your Name *"
+                :rules="[val => !!val || 'Name is required']"
+              />
+
+              <q-input
+                filled
+                v-model="email"
+                label="Email *"
+                type="email"
+                :rules="[val => !!val || 'Email is required', val => /^[^@]+@[^@]+\.[^@]+$/.test(val) || 'Invalid email']"
+              />
+
+              <q-input
+                filled
+                v-model="subject"
+                label="Subject *"
+                :rules="[val => !!val || 'Subject is required']"
+              />
+
+              <q-input
+                filled
+                v-model="message"
+                label="Message *"
+                type="textarea"
+                :rules="[val => !!val || 'Message is required']"
+              />
+
+              <div class="flex justify-center q-mt-lg">
+                <q-btn
+                  :loading="submitting"
+                  type="submit"
+                  color="primary"
+                  label="Send Message"
+                />
+              </div>
+            </q-form>
+          </q-card-section>
+        </q-card>
+      </div>
   </q-page>
+
 </template>
 
 

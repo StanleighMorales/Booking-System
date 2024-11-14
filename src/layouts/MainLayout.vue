@@ -18,8 +18,8 @@
           :options="[
             {label: 'Home', value: 'home'},
             {label: 'Service', value: 'service'},
-            {label: 'Contact', value: 'contact'},
-            {label: 'About', value: 'about'}
+            {label: 'About', value: 'about'},
+            {label: 'Contact', value: 'contact'}
             ]"
 
         />
@@ -28,11 +28,12 @@
         class="q-m-md text-white bg-primary"
         style="width: 8em;"
         rounded
-        label="Login"></q-btn>
+        label="Login"
+        @click="goToSignIn"
+        ></q-btn>
         </q-section>
 
 
-        <!-- Menu button only visible on smaller screens -->
         <q-btn
           v-if="$q.screen.lt.md"
           flat
@@ -45,7 +46,6 @@
       </q-toolbar>
     </q-header>
 
-    <!-- Drawer is hidden on larger screens -->
     <q-drawer v-if="$q.screen.lt.md" v-model="rightDrawerOpen" show-if-above bordered side="right">
       <q-list v-show="rightDrawerOpen">
         <q-item-label header>Menu</q-item-label>
@@ -66,14 +66,17 @@
 
 <script setup>
 import { ref } from "vue";
-import { useQuasar } from "quasar";  // Import Quasar composable for screen breakpoints
+import { useRouter } from 'vue-router'
+
+
+import { useQuasar } from "quasar";
 import EssentialLink from "components/EssentialLink.vue";
 
 defineOptions({
   name: "MainLayout",
 });
 
-const $q = useQuasar();  // Use Quasar screen breakpoints
+const $q = useQuasar();
 
 const linksList = [
   { title: "Home", icon: "home" },
@@ -90,5 +93,10 @@ const rightDrawerOpen = ref(false);
 function toggleRightDrawer() {
   rightDrawerOpen.value = !rightDrawerOpen.value;
 }
-console.log($q);
+
+const router = useRouter()
+const goToSignIn = () => {
+  alert('clicked')
+  router.push('/signin')
+}
 </script>
