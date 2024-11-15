@@ -28,7 +28,7 @@ const routes = [
     path: '/admin',
     component: () => import('src/layouts/AdminPage.vue'),
     children: [
-      {path: '', component: () => import('src/pages/UsersTablePage.vue')}
+      {path: '', component: () => import('src/components/UsersTablePage.vue')}
     ]
   },
 
