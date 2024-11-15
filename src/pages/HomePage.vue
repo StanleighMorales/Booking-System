@@ -52,92 +52,74 @@ const onSubmit = async () => {
 </script>
 
 <template>
-  <q-page id="home" class="flex flex-center min-width: 100%; max-width: 100%;">
-    <div
-      class="fit row wrap justify-evenly items-center content-center q-gutter-sm relative-position q-m-md"
-      style="overflow: hidden"
-    >
-      <div
-        id="text"
-        class="rounder-borders"
-        style="overflow: auto; max-width: 35em"
-      >
-        <q-card flat class="transparent">
-          <q-card-section>
-            <q-card-title class="text-h3 text-bold text-white">
-              Welcome to Tooth Art Dental Clinic
-            </q-card-title>
-            <q-card>
-              <q-card-section id="description" class="text-h5 q-ma-sm">
-                <span v-bind:style="fontSize"
-                  >We strive to remove barriers connected to our society about
-                  Dental Health. We want to promote Oral Health awareness that
-                  it's a necessity. We want to remove anything that hinders a
-                  patient's ability to maintain a healthy smile. Our team is
-                  constantly working to discover new ways to break through
-                  barriers so that each and everyone of our patients can achieve
-                  the smile they truly deserve.
-                </span>
-                <div class="flex justify-end q-my-sm">
-                  <router-view name="bookAppointment" />
-                </div>
-              </q-card-section>
-            </q-card>
-          </q-card-section>
-        </q-card>
-      </div>
-      <div
-        id="image"
-        class="rounder-borders"
-        style="
-          overflow: auto;
-          min-width: 60em;
-          max-width: 60em;
-          min-height: 38em;
-          max-height: 40em;
-        "
-      >
-        <q-card>
-          <q-card-section>
-            Child #2
-            <div class="q-pa-md">
-              <q-carousel
-                animated
-                v-model="slide"
-                navigation
-                infinite
-                :autoplay="autoplay"
-                arrows
-                transition-prev="slide-right"
-                transition-next="slide-left"
-                @mouseenter="autoplay = false"
-                @mouseleave="autoplay = true"
-                style="min-height: 33em; max-height: 30em"
-                class="rounder-borders"
-              >
-                <q-carousel-slide
-                  :name="1"
-                  img-src="../assets/images/contents/Screenshot 2024-11-02 125030.png"
-                />
-                <q-carousel-slide
-                  :name="2"
-                  img-src="../assets/images/contents/Screenshot 2024-11-02 125030.png"
-                />
-                <q-carousel-slide
-                  :name="3"
-                  img-src="../assets/images/contents/Screenshot 2024-11-02 125030.png"
-                />
-                <q-carousel-slide
-                  :name="4"
-                  img-src="../assets/images/contents/Screenshot 2024-11-02 125030.png"
-                />
-              </q-carousel>
-            </div>
-          </q-card-section>
-        </q-card>
+  <q-page id="home" class="flex flex-center">
+    <div class="q-pa-md row-stacked-to-horizontal">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <q-card flat class="transparent">
+            <q-card-section>
+              <q-card-title class="text-h3 text-bold text-white">
+                Welcome to Tooth Art Dental Clinic
+              </q-card-title>
+              <q-card>
+                <q-card-section id="description" class="text-h5 q-ma-sm">
+                  <span v-bind:style="fontSize"
+                    >We strive to remove barriers connected to our society about
+                    Dental Health. We want to promote Oral Health awareness that
+                    it's a necessity. We want to remove anything that hinders a
+                    patient's ability to maintain a healthy smile. Our team is
+                    constantly working to discover new ways to break through
+                    barriers so that each and everyone of our patients can
+                    achieve the smile they truly deserve.
+                  </span>
+                  <div class="flex justify-end q-my-sm">
+                    <router-view name="bookAppointment" />
+                  </div>
+                </q-card-section>
+              </q-card>
+            </q-card-section>
+          </q-card>
+        </div>
+        <div class="col-12 col-md-8">
+          <div class="q-pa-md">
+            <q-carousel
+              class="wrap"
+              style="height: 50em; border: solid 1px white"
+              animated
+              v-model="slide"
+              arrows
+              navigation
+              infinite
+              :autoplay="autoplay"
+              
+            >
+              <q-carousel-slide
+                :name="1"
+                img-src="../assets/images/contents/01.jpg"
+              />
+              <q-carousel-slide
+                :name="2"
+                img-src="../assets/images/contents/02.jpg"
+              />
+              <q-carousel-slide
+                :name="3"
+                img-src="../assets/images/contents/03.jpg"
+              />
+              <q-carousel-slide
+                :name="4"
+                img-src="../assets/images/contents/04.jpg"
+              />
+              <q-carousel-slide
+                :name="5"
+                img-src="../assets/images/contents/05.jpg"
+              />
+            </q-carousel>
+          </div>
+        </div>
       </div>
     </div>
   </q-page>
+
   <q-page id="service" class="fit bg-primary q-pa-md">
     <router-view name="services" />
   </q-page>
