@@ -7,9 +7,9 @@
 
         <q-toolbar-title>
           <q-avatar>
-            <img src="https://cdn.quasar.dev/logo-v2/svg/logo-mono-white.svg">
+            <img src="">
           </q-avatar>
-          Admin Pannel
+          Admin Panel
         </q-toolbar-title>
       </q-toolbar>
     </q-header>

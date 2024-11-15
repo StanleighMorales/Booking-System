@@ -49,14 +49,11 @@ const onSubmit = async () => {
     submitting.value = false;
   }
 };
-
-
 </script>
 
 <template>
-  <q-page class="flex flex-center min-width: 100%; max-width: 100%;">
+  <q-page id="home" class="flex flex-center min-width: 100%; max-width: 100%;">
     <div
-      id="parent"
       class="fit row wrap justify-evenly items-center content-center q-gutter-sm relative-position q-m-md"
       style="overflow: hidden"
     >
@@ -146,14 +143,13 @@ const onSubmit = async () => {
   </q-page>
 
   <!-- about section -->
-  <q-layout>
-    <q-page id="about" class=" q-pa-md">
-      <router-view name="about" />
-    </q-page>
-  </q-layout>
+
+  <q-page id="about" class="q-pa-md">
+    <router-view name="about" />
+  </q-page>
 
   <!-- interactive map section -->
-  <q-page class=" bg-primary flex flex-center min-width: 100%; max-width: 100%;">
+  <q-page class="bg-primary flex flex-center min-width: 100%; max-width: 100%;">
     <router-view />
   </q-page>
   <!-- contact section -->
@@ -216,6 +212,19 @@ const onSubmit = async () => {
                 (val) => !!val || 'Email is required',
                 (val) => /^[^@]+@[^@]+\.[^@]+$/.test(val) || 'Invalid email',
               ]"
+            />
+            <q-input
+              filled
+              v-model="contact"
+              label="Contact Number *"
+              mask="+63##########"
+              rules="[ 
+    (val) => !!val || 'Contact number is required',
+    (val) => val.length === 13 || 'Contact number must be 10 digits (e.g., +639123456789)',
+  ]"
+              type="tel"
+              hint="Format: +639XXXXXXXXX"
+              placeholder="Enter your number"
             />
 
             <q-input

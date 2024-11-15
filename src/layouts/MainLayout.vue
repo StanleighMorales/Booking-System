@@ -65,7 +65,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import { useRouter } from 'vue-router'
 
 
@@ -93,6 +93,16 @@ const rightDrawerOpen = ref(false);
 function toggleRightDrawer() {
   rightDrawerOpen.value = !rightDrawerOpen.value;
 }
+
+const model = ref('home'); // Default selected value
+
+// Watch for changes in the toggle's value and scroll to the corresponding section
+watch(model, (newValue) => {
+  const section = document.getElementById(newValue); // Find the section by its ID
+  if (section) {
+    section.scrollIntoView({ behavior: 'smooth', block: 'start' }); // Smooth scrolling
+  }
+});
 
 const router = useRouter()
 const goToSignIn = () => {
