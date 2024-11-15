@@ -9,7 +9,9 @@ const routes = [
             path: '',
             components: {
               default: () => import('src/pages/ClinicMapPage.vue'), // Default view
-              bookAppointment: () => import('src/components/AddAppointment.vue') // Named view
+              bookAppointment: () => import('src/components/AddAppointment.vue'),
+              services: () => import('src/components/ServicesComponent.vue'),
+              about: () => import('src/components/AboutComponents.vue') // Named view
             }
           }
         ]
